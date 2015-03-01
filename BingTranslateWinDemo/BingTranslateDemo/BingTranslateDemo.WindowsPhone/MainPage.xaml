@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="BingTranslateDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BingTranslateDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="10,0,10,0">
+            <TextBlock Text="Translator" Margin="0,0,0,10" Style="{ThemeResource HeaderTextBlockStyle}" />
+            <TextBox x:Name="txtSource" Margin="0,10,0,10" Height="180" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Top" 
+                     PlaceholderText="type the text to translate here" 
+                     Text="This is a test to see if we can properly translate this text to another language."/>
+            <ComboBox x:Name="lstLanguages" Margin="0" DisplayMemberPath="Language" />
+            <TextBlock x:Name="lblResult" Margin="0,10,0,0" Height="180" Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Stretch" TextWrapping="Wrap" />
+        </StackPanel>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="Talk" Icon="Microphone" Click="btnTalk_Click"/>
+            <AppBarButton Label="Translate" Icon="Globe" Click="btnTranslate_Click"/>
+            <AppBarButton Label="Read" Icon="Play" Click="btnRead_Click"/>
+            <AppBarButton Label="Clear" Icon="Clear" Click="btnClear_Click"/>
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Settings" Icon="Setting" Click="btnSettings_Click"/>
+                <AppBarButton Label="Help" Icon="Help" Click="btnHelp_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+</Page>

@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="BingTranslateDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BingTranslateDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBox x:Name="txtSource" HorizontalAlignment="Left" Margin="7,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" PlaceholderText="type the text to translate here" Text="This is a test to see if we can properly translate this to another language."/>
+        <TextBlock x:Name="lblResult" Style="{ThemeResource BodyTextBlockStyle}" HorizontalAlignment="Left" Margin="7,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="126" Width="290"/>
+        <Button x:Name="btnTranslate" Content="Translate" HorizontalAlignment="Left" Margin="7,140,0,0" VerticalAlignment="Top" Width="296" Click="btnTranslate_Click" Height="92"/>
+
+    </Grid>
+</Page>
