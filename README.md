@@ -15,5 +15,8 @@ Microsoft Translator API in Azure data Market (up to 2M characters / month free)
 http://datamarket.azure.com/dataset/bing/microsofttranslator
 
 You need to obtain a valid application key from the Azure Marketplace, see http://msdn.microsoft.com/en-us/library/hh454950.aspx for details.
-THE TRANSLATOR CALLS WILL FAIL UNTIL YOU REPLACE THE TWO VALUES BELOW WITH YOUR OWN ID & SECRET in the class Translator.cs (BingAPILibrary PCL project).
-SEE THE LINKS ABOVE FOR INSTRUCTIONS
+
+THE TRANSLATOR CALLS WILL FAIL UNTIL YOU REPLACE THE APP ID & SECRET VALUES WITH YOUR OWN.
+
+You can find them in the class Translator.cs (BingAPILibrary PCL project). See the links above for instructions.
+
