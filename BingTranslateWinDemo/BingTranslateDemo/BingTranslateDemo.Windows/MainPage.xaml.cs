@@ -47,19 +47,40 @@ namespace BingTranslateDemo
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Translator tr;
+
         public MainPage()
         {
             this.InitializeComponent();
 
             Windows.System.Display.DisplayRequest dr = new Windows.System.Display.DisplayRequest();
             dr.RequestActive();
+
+            tr = new Translator();
+
+
+            //cboLanguage.Items.Add("de-DE");
+            //cboLanguage.Items.Add("en-US");
+            //cboLanguage.Items.Add("fr-FR");
+
+            //cboLanguage.SelectedItem = "fr-FR";
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> languages = await tr.GetLanguagesForTranslate();
+
+            foreach(string language in languages)
+            {
+                cboLanguage.Items.Add(language);
+            }
+            if (cboLanguage.Items.Count > 0)
+                cboLanguage.SelectedItem = "fr";
         }
 
         private async void btnTranslate_Click(object sender, RoutedEventArgs e)
         {
-            Translator tr = new Translator();
-
-            lblResult.Text = await tr.TranslateString(txtSource.Text, "fr-FR");
+            lblResult.Text = await tr.TranslateString(txtSource.Text, cboLanguage.SelectedValue.ToString());
         }
     }
 }

@@ -30,6 +30,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BingAPILibrary
 {
@@ -45,8 +46,8 @@ namespace BingAPILibrary
         // see http://msdn.microsoft.com/en-us/library/hh454950.aspx for details
         // THE TRANSLATOR CALLS WILL FAIL UNTIL YOU REPLACE THE TWO VALUES BELOW WITH
         // YOUR OWN ID & SECRET. sEE THE LINKS ABOVE FOR INSTRUCTIONS
-        private readonly string _clientId = "XXXXX-INSERT YOUR CLIENT ID HERE-XXXXX";
-        private readonly string _clientSecret = "XXXXX-INSERT YOUR CLIENT SECRET HERE-XXXXX";
+        private readonly string _clientId = "ActiveNickBingTranslateDemo";
+        private readonly string _clientSecret = "+IA+aBq4RzNt8AQR10BeXpozeNPnaVgF6JjmkRyj8d0=";
 
         private readonly Uri _dataMarketAddress = new Uri("https://datamarket.accesscontrol.windows.net/v2/OAuth2-13");
 
@@ -76,6 +77,37 @@ namespace BingAPILibrary
             {
                 // TO DO: Do something with the exception
                 return "";
+            }
+        }
+
+        public async Task<List<string>> GetLanguagesForTranslate()
+        {
+            List<string> languages = new List<string>();
+
+            string auth = await GetAzureDataMarketToken();
+
+            //_client.DefaultRequestHeaders.Add("Authorization", auth);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", auth);
+            string RequestUri = "http://api.microsofttranslator.com/v2/Http.svc/GetLanguagesForTranslate";
+            try
+            {
+                string strTranslated = await _client.GetStringAsync(RequestUri);
+                System.Xml.Linq.XDocument xTranslation = System.Xml.Linq.XDocument.Parse(strTranslated);
+
+                string strTransText = xTranslation.Root.FirstNode.ToString();
+
+                foreach(XElement xe in xTranslation.Root.FirstNode.ElementsAfterSelf())
+                {
+
+                    languages.Add(xe.Value.ToString());
+                }
+
+                return languages;
+            }
+            catch (Exception ex)
+            {
+                // TO DO: Do something with the exception
+                return null;
             }
         }
 
