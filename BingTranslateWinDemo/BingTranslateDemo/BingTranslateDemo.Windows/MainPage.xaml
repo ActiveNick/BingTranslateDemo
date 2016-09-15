@@ -15,7 +15,7 @@
                 <Button x:Name="btnTranslate" Content="Translate" Height ="50" Margin="12" Width="200" Click="btnTranslate_Click" />
                 <ComboBox x:Name="cboLanguage" Height ="50" Margin="12" Width="150" />
             </StackPanel>
-            <TextBlock x:Name="lblResult" Margin="12" Style="{ThemeResource BodyTextBlockStyle}" TextWrapping="Wrap" Height="150" />
+            <TextBlock x:Name="lblResult" Margin="12" Style="{ThemeResource SubtitleTextBlockStyle}" TextWrapping="Wrap" Height="150" />
         </StackPanel>
     </Grid>
 </Page>
